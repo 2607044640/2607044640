@@ -1,0 +1,27 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class rotate : MonoBehaviour
+{
+
+    public Transform cube;
+    public float rotatespeed, speed, radius;
+    void start()
+    {
+
+    }
+
+    void Update()
+    {
+        // transform.RotateAround(cube.transform.position, Vector3.up, Time.deltaTime * rotatespeed);
+        speed += Time.deltaTime * rotatespeed;
+        if (speed >= 360)
+        {
+            speed -= 360;
+        }
+        float x = Mathf.Cos(speed) * radius;
+        float y = Mathf.Sin(speed) * radius;
+        transform.position = new Vector3(cube.position.x + x, cube.position.y + y, 0);
+    }
+}
